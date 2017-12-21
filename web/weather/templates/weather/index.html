@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Dashboard</title>
+</head>
+<body>
+    <form method="post" action="{% url 'current_weather' %}">
+        {% csrf_token %}
+        <select name="dropdown">
+            <option value="" selected="selected">---------</option>
+            {% for country in countries %}
+            <option value="{{ country.capital }},{{ country.alpha2Code }}">{{ country.name }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Show current weather">
+    </form>
+</body>
+</html>
